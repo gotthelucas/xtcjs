@@ -104,7 +104,7 @@ function RootLayout() {
               aria-expanded={extraOpen}
               aria-controls="extra-tools-nav"
             >
-              Extra
+              Extra <span className="nav-caret" aria-hidden="true">▼</span>
             </button>
           </nav>
 

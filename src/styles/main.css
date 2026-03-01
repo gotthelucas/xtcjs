@@ -107,6 +107,7 @@ body {
   .nav-stack { grid-area: nav; }
   .mode-toggle { grid-area: mode-toggle; }
   .dropzone-wrapper { grid-area: dropzone; }
+  .options-stack { grid-area: options; align-self: start; }
   .options-panel { grid-area: options; align-self: start; }
   .file-list { grid-area: files; }
   .action-section { grid-area: action; align-self: start; }
@@ -226,6 +227,14 @@ body {
   border: none;
   padding: 0;
   cursor: pointer;
+}
+
+.nav-caret {
+  display: inline-block;
+  font-size: 0.95em;
+  font-weight: 700;
+  line-height: 1;
+  transform: translateY(-0.02em);
 }
 
 .nav-subtabs {

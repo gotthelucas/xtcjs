@@ -40,8 +40,12 @@
   animation: fadeUp 0.5s ease-out 0.1s both;
 }
 
+.device-panel {
+  animation: fadeUp 0.5s ease-out 0.16s both;
+}
+
 .options-panel {
-  animation: fadeUp 0.5s ease-out 0.2s both;
+  animation: fadeUp 0.5s ease-out 0.24s both;
 }
 
 /* File items animate in */
