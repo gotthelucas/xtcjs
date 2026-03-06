@@ -12,6 +12,7 @@ import { recordConversion } from '../lib/api'
 import { consumePendingFiles } from '../lib/file-transfer'
 import { useStoredResults, type StoredResult } from '../hooks/useStoredResults'
 import { extractXtcPages } from '../lib/xtc-reader'
+import { normalizeUserErrorMessage } from '../lib/errors'
 
 interface ConverterPageProps {
   fileType: 'cbz' | 'pdf' | 'image' | 'video'
@@ -241,7 +242,7 @@ export function ConverterPage({ fileType, notice }: ConverterPageProps) {
         // Store error result
         await addResult({
           name: file.name.replace(/\.[^/.]+$/i, '.xtc'),
-          error: err instanceof Error ? err.message : 'Unknown error',
+          error: normalizeUserErrorMessage(err instanceof Error ? err.message : 'Unknown error'),
         })
       }
 

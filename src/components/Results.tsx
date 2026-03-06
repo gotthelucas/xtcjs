@@ -1,5 +1,6 @@
 import { formatSize } from '../utils/format'
 import type { StoredResult } from '../hooks/useStoredResults'
+import { LinkedText } from './LinkedText'
 
 interface ResultsProps {
   results: StoredResult[]
@@ -64,7 +65,7 @@ export function Results({
             <div>
               <span className="name">{result.name}</span>
               {result.error ? (
-                <div className="info">Error: {result.error}</div>
+                <div className="info">Error: <LinkedText text={result.error} /></div>
               ) : (
                 <div className="info">
                   {result.pageCount} pages &middot; {formatSize(result.size || 0)}

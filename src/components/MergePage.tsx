@@ -1,7 +1,9 @@
 import { useState, useCallback, useMemo } from 'react'
 import { useNavigate } from '@tanstack/react-router'
 import { Viewer } from './Viewer'
+import { LinkedText } from './LinkedText'
 import { formatSize } from '../utils/format'
+import { normalizeUserErrorMessage } from '../lib/errors'
 import { setPendingFiles, arrayBufferToFile } from '../lib/file-transfer'
 import {
   mergeFiles,
@@ -215,7 +217,7 @@ export function MergePage() {
         data: new ArrayBuffer(0),
         size: 0,
         pageCount: 0,
-        error: err instanceof Error ? err.message : 'Unknown error',
+        error: normalizeUserErrorMessage(err instanceof Error ? err.message : 'Unknown error'),
       }])
     } finally {
       setIsProcessing(false)
@@ -552,7 +554,7 @@ export function MergePage() {
                 <div className="result-info">
                   <span className="name">{result.name}</span>
                   {result.error ? (
-                    <div className="info">Error: {result.error}</div>
+                    <div className="info">Error: <LinkedText text={result.error} /></div>
                   ) : (
                     <div className="info">
                       {result.pageCount} pages &middot; {formatSize(result.size)}
@@ -625,7 +627,7 @@ export function MergePage() {
             {results.map((result, idx) => (
               <div key={idx} className="result-item error">
                 <div className="result-info">
-                  <div className="info">{result.error}</div>
+                  <div className="info"><LinkedText text={result.error} /></div>
                 </div>
               </div>
             ))}
